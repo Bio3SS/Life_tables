@@ -17,7 +17,7 @@ include $(ms)/perl.def
 
 ## Content
 
-Sources += $(wildcard *.pl *.ssv *.h *.R *.t)
+Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt)
 
 # Life table calculations
 %.tsv: %.ssv lt.pl
