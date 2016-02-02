@@ -1,0 +1,1 @@
+\section*{Beaver life table}

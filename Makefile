@@ -11,11 +11,56 @@ target pngtarget pdftarget vtarget acrtarget: notarget
 
 Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
 include stuff.mk
-# include $(ms)/perl.def
+include $(ms)/perl.def
 
 ##################################################################
 
 ## Content
+
+Sources += $(wildcard *.pl *.ssv *.h *.R *.t)
+
+# Life table calculations
+%.tsv: %.ssv lt.pl
+	$(PUSH)
+
+# the tsv is made into a table using automatic rules from site-default
+
+# Make un-filled version
+%.empty.tsv: %.tsv ltempty.pl
+	$(PUSH)
+
+%.skeleton.tsv: %.tsv ltskeleton.pl
+	$(PUSH)
+
+%.tmp: %.h lt.t
+	cat $^ > $@
+
+# This may not work if you try to make empty version first.
+%.empty.tmp: %.tmp
+	/bin/cp -f $< $@
+
+%.skeleton.tmp: %.tmp
+	/bin/cp -f $< $@
+
+%.before.h: before.h
+	/bin/ln -fs $< $@
+
+%.before.Rout: table.Rout %.Rout before.R
+	$(run-R)
+
+%.after.h: after.h
+	/bin/ln -fs $< $@
+
+%.after.Rout: table.Rout %.Rout after.R
+	$(run-R)
+
+%.ssv: %.Rout ;
+
+%.tab.tex: %.tsv %.tmp tab.fmt dmu.pl
+	$(PUSH)
+
+params.tex standalone.tex: %.tex: params.tsv %.tmp tab.fmt dmu.pl
+	perl -f dmu.pl $^ > $@
 
 ######################################################################
 
