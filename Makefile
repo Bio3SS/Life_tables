@@ -2,7 +2,7 @@
 ### Hooks for the editor to set the default target
 current: target
 
-target pngtarget pdftarget vtarget acrtarget: notarget
+target pngtarget pdftarget vtarget acrtarget: dandy.skeleton.tab.tex
 
 ##################################################################
 
@@ -11,7 +11,10 @@ target pngtarget pdftarget vtarget acrtarget: notarget
 
 Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
 include stuff.mk
-include $(ms)/perl.def
+-include $(ms)/os.mk
+-include $(ms)/perl.def
+
+newdir:
 
 ##################################################################
 
