@@ -67,6 +67,10 @@ params.tex standalone.tex: %.tex: params.tsv %.tmp tab.fmt dmu.pl
 
 ######################################################################
 
+## Version parsing for 3SS tests
+%-1-version.R %-2-version.R %-3-version.R %-4-version.R %-5-version.R: %.pars versions.pl
+	$(PUSHOUT)
+
 ### Makestuff
 
 ## Change this name to download a new version of the makestuff directory
@@ -75,5 +79,5 @@ params.tex standalone.tex: %.tex: params.tsv %.tmp tab.fmt dmu.pl
 -include $(ms)/git.mk
 -include $(ms)/visual.mk
 
-# -include $(ms)/wrapR.mk
+-include $(ms)/wrapR.mk
 # -include $(ms)/oldlatex.mk
