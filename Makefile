@@ -6,7 +6,6 @@ target pngtarget pdftarget vtarget acrtarget: dandy.skeleton.tab.tex
 
 ##################################################################
 
-
 # make files
 
 Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
@@ -23,10 +22,9 @@ newdir:
 Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt)
 
 # Life table calculations
+## User provides an .ssv file, which is made into a .tsv life table
 %.tsv: %.ssv lt.pl
 	$(PUSH)
-
-# the tsv is made into a table using automatic rules from site-default
 
 # Make un-filled version
 %.empty.tsv: %.tsv ltempty.pl
