@@ -19,7 +19,7 @@ newdir:
 
 ## Content
 
-Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt)
+Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt *.pars)
 
 # Life table calculations
 ## User provides an .ssv file, which is made into a .tsv life table
