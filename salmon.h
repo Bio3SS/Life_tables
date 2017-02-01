@@ -1,0 +1,1 @@
+% \section*{Independent salmon example}

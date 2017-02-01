@@ -10,7 +10,6 @@ target pngtarget pdftarget vtarget acrtarget: dandy.skeleton.tab.tex
 
 Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
 include stuff.mk
--include $(ms)/os.mk
 -include $(ms)/perl.def
 
 newdir:
@@ -21,8 +20,12 @@ newdir:
 
 Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt *.pars)
 
+sourcelist: .
+	ls -t *.ssv > $@
+
 # Life table calculations
 ## User provides an .ssv file, which is made into a .tsv life table
+## To finish the pipeline, we later need a .h file which makes the header.
 %.tsv: %.ssv lt.pl
 	$(PUSH)
 
