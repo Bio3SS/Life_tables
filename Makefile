@@ -1,15 +1,14 @@
 # Life_tables
 ### Hooks for the editor to set the default target
 current: target
-
-target pngtarget pdftarget vtarget acrtarget: dandy.skeleton.tab.tex
+-include $(ms)/target.mk
 
 ##################################################################
 
 # make files
 
-Sources = Makefile .gitignore README.md stuff.mk LICENSE.md
-include stuff.mk
+Sources = Makefile .gitignore README.md sub.mk LICENSE.md
+include sub.mk
 -include $(ms)/perl.def
 
 newdir:
