@@ -29,6 +29,7 @@ sourcelist: .
 	$(PUSH)
 
 # Make un-filled version
+Ignore += *.empty.tsv
 %.empty.tsv: %.tsv ltempty.pl
 	$(PUSH)
 
@@ -59,6 +60,7 @@ sourcelist: .
 
 %.ssv: %.Rout ;
 
+Ignore += *.tab.tex
 %.tab.tex: %.tsv %.tmp tab.fmt dmu.pl
 	$(PUSH)
 
