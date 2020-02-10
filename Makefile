@@ -1,17 +1,16 @@
 # Life_tables
-### Hooks for the editor to set the default target
+
 current: target
--include $(ms)/target.mk
+-include target.mk
 
-##################################################################
+-include makestuff/perl.def
 
-# make files
+######################################################################
 
-Sources = Makefile .ignore README.md sub.mk LICENSE.md
-include sub.mk
--include $(ms)/perl.def
+# Content
 
-newdir:
+vim_session:
+	bash -cl "vmt"
 
 ##################################################################
 
@@ -69,17 +68,24 @@ params.tex standalone.tex: %.tex: params.tsv %.tmp tab.fmt dmu.pl
 
 ######################################################################
 
-## Version parsing for 3SS tests
-%-1-version.R %-2-version.R %-3-version.R %-4-version.R %-5-version.R: %.pars versions.pl
-	$(PUSHOUT)
-
 ### Makestuff
 
-## Change this name to download a new version of the makestuff directory
-# Makefile: start.makestuff
+Sources += Makefile
 
--include $(ms)/git.mk
--include $(ms)/visual.mk
+## Sources += content.mk
+## include content.mk
 
--include $(ms)/wrapR.mk
-# -include $(ms)/oldlatex.mk
+Ignore += makestuff
+msrepo = https://github.com/dushoff
+Makefile: makestuff/Makefile
+makestuff/Makefile:
+	git clone $(msrepo)/makestuff
+	ls $@
+
+-include makestuff/os.mk
+
+## -include makestuff/wrapR.mk
+
+-include makestuff/git.mk
+-include makestuff/visual.mk
+-include makestuff/projdir.mk
