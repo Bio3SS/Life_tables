@@ -14,6 +14,10 @@ vim_session:
 
 ##################################################################
 
+## Aim to get rid of the weird pl / ssv stuff upstream and start with 
+## dataframe-like input files (a column for f and p, or else m and two ps
+## merge some other stream (with the m ⇒ f) that is SOMEWHERE (maybe here)
+
 ## Content
 
 Sources += $(wildcard *.pl *.ssv *.h *.R *.t *.fmt *.pars)
