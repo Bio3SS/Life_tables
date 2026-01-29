@@ -28,6 +28,7 @@ sourcelist: .
 # Life table calculations
 ## User provides an .ssv file, which is made into a .tsv life table
 ## To finish the pipeline, we later need a .h file which makes the header.
+Ignore += *.tsv
 %.tsv: %.ssv lt.pl
 	$(PUSH)
 
