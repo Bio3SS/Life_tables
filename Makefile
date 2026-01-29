@@ -63,6 +63,8 @@ Ignore += *.empty.tsv
 
 %.ssv: %.Rout ;
 
+## Why did I have to make pre.tsv manually? It should chain 2026 Jan 29 (Thu)
+## pre.tab.tex: pre.tsv
 Ignore += *.tab.tex
 %.tab.tex: %.tsv %.tmp tab.fmt dmu.pl
 	$(PUSH)
@@ -89,6 +91,7 @@ makestuff/Makefile:
 -include makestuff/os.mk
 
 ## -include makestuff/wrapR.mk
+-include makestuff/texj.mk
 
 -include makestuff/git.mk
 -include makestuff/visual.mk
